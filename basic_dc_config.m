@@ -19,13 +19,14 @@
 % B_L = load viscuous friction coefficient
 % N = gear ratio
 % k_t = motor torque constant
-
+clear;
 J_m = 1;
 J_L = 1;
 B_m = 1;
 B_L = 1;
 N = 1;
-K = 1;
+k_1 = 1;
+k_2 = 1;
 
 % DC Armature Constants from 343 Textbook example
 k_t = 0.05; %Nm/A
@@ -34,6 +35,10 @@ L_a = 2E-03; %H
 c = 1E-04; %Nms/rad
 R_a = 0.5; %Ohms
 I = 9E-05; %kgm^2
+theta_c = 0; %parallel spring equilibrium point
+m = 2; %kg
+g = 9.8; %m/s^2
+l = 0.25; %m 
 
 ki = 0; kp = 1; kd = 0;
 amp_gain = 1;
