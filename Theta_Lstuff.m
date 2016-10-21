@@ -1,18 +1,21 @@
-theta_L = linspace(-pi/2,pi/2,100);
-theta_c = linspace(-pi/2,pi/2,100);
+theta_L = linspace(-pi/4,pi/4,100);
+theta_c = linspace(-pi,pi,100);
 g = 9.81;
 k1 = g;
-k2 = linspace(0,1000,100);
+k2 = linspace(0,5,1000);
 m = 1;
 l = 1/3;
 
 amin = 99999;
-for i = 1:100
+for i = 1:1000
+    %figure
     for k = 1:100
         for j = 1:100
             Tm(j) = k2(i)*(theta_L(j)-theta_c(k))+cos(theta_L(j))*m*g*l;
         end
-        a = abs(trapz(theta_L, Tm));
+        %subplot(5,2,i)
+        %plot(theta_L,Tm)
+        a = rms(Tm);
         if a <= amin
             amin = a;
             thc = theta_c(k);
