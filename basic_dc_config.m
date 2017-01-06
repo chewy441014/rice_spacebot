@@ -41,7 +41,7 @@ J_m = m*l^2;    % Motor inertia, kg*m^2
 J_L = 4.17e-6;    % Load inertia, kg*m^2
 b_m = 4.5e-4;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-2;    % Load viscous friction coefficient, N*m*s
-% N = 1;      % Gear ratio
+N = 1;      % Gear ratio
 k_1 = 10;    % Series spring coefficient, N*m
 k_2 = 0;    % Parallel spring coefficient, N*m
 
