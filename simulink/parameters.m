@@ -56,3 +56,6 @@ K_a = 1.4;      % Amp constant, A/V
 % I = 9E-05; %kgm^2
 
 %% Initial Conditions
+
+controller = input('Select your controller \n 1 = Position \n 2 = Torque \n');
+plant = input('Select your plant \n 1 = SEA \n 2 = preSPEA \n 3 = postSPEA \n');
