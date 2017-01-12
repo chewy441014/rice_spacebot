@@ -42,8 +42,8 @@ J_L = 4.17e-6;    % Load inertia, kg*m^2
 b_m = 4.5e-4;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-2;    % Load viscous friction coefficient, N*m*s
 N = 1;      % Gear ratio
-k_1 = 10;    % Series spring coefficient, N*m
-k_2 = 0;    % Parallel spring coefficient, N*m
+k_s = 10;    % Series spring coefficient, N*m
+k_p = 0;    % Parallel spring coefficient, N*m
 
 K_t = 0.022879; % Torque constant, N*m/A
 K_a = 1.4;      % Amp constant, A/V
@@ -56,7 +56,3 @@ K_a = 1.4;      % Amp constant, A/V
 % I = 9E-05; %kgm^2
 
 %% Initial Conditions
-
-
-%% Save Variables
-save('dc_config')
