@@ -48,13 +48,27 @@ k_p = 0;    % Parallel spring coefficient, N*m
 K_t = 0.022879; % Torque constant, N*m/A
 K_a = 1.4;      % Amp constant, A/V
 
-% DC Armature Constants from 343 Textbook example
-% k_b = K_t;
-% L_a = 2E-03; %H
-% c = 1E-04; %Nms/rad
-% R_a = 0.5; %Ohms
-% I = 9E-05; %kgm^2
+controller = 1;
+plant = 1;
+control_value = 0;
 
-%% Initial Conditions
-controller = input('Select your controller \n 1 = Position \n 2 = Torque \n');
-plant = input('Select your plant \n 1 = SEA \n 2 = preSPEA \n 3 = postSPEA \n');
+assignin('base','K_p',K_p);
+assignin('base','K_d',K_d);
+assignin('base','K_i',K_i);
+assignin('base','T_sample_control',T_sample_control);
+assignin('base','m',m);
+assignin('base','g',9.8);
+assignin('base','l',0.25);
+assignin('base','theta_c',theta_c);
+assignin('base','J_m',J_m);
+assignin('base','J_L',J_L);
+assignin('base','b_m',b_m);
+assignin('base','b_L',b_L);
+assignin('base','N',N);
+assignin('base','k_s',k_s);
+assignin('base','k_p',k_p);
+assignin('base','K_t',K_t);
+assignin('base','K_a',K_a);
+assignin('base','controller',controller);
+assignin('base','plant',plant);
+assignin('base','control_value',control_value)
