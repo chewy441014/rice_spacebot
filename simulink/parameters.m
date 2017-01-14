@@ -5,60 +5,61 @@
 % Claudia Kann
 % Ian Tomkinson
 % SPACEBOT
-%
-%
-% DC Motor Configuration
-%
-% T_m(t) = motor torque 
-% b_m = motor viscuous friction coefficient
-% k = spring constant
-% theta_m = motor displacement
-% omega_m = motor velocity
-% J_m = motor inertia
-% theta_L = load displacement
-% omega_L = load velocity
-% J_L = load inertia
-% b_L = load viscuous friction coefficient
-% N = gear ratio
-% k_t = motor torque constant
 
 clear;
 
 %% Controller Gains
-K_p = 100;    % Proportional Gain
-K_d = 10;    % Derivative Gain
-K_i = 100;    % Integral Gain
+K_p = 0.025;    % Proportional Gain
+K_d = 0.005;    % Derivative Gain
+K_i = 0.1;    % Integral Gain
 
-T_sample_control = 1e-3;    % Sample period, s
+T_sample_control = 500e-6;    % Sample period, s
 
 %% System Parameters
-m = 0.25;      % Mass of arm, kg
-g = 9.8;    % Gravity, m/s^2
-l = 0.25;   % Distance to center of mass of arm, m
+m = 0.0907;      % Mass of arm, kg
+g = 9.81;    % Gravity, m/s^2
+l = 0.16;   % Distance to center of mass of arm, m
 theta_c = 0; % Parallel spring equilibrium point, radians
 
-J_m = m*l^2;    % Motor inertia, kg*m^2
-J_L = 4.17e-6;    % Load inertia, kg*m^2
-b_m = 4.5e-4;    % Motor viscous friction coefficient, N*m*s
+J_motor = 4.17e-6; % Motor inertia, kg*m^2
+J_sgear = 2e-8; % Small gear inertia, kg*m^2
+J_bgear = 2e-6; % Big gear inertia, kg*m^2
+J_m = J_motor + J_sgear + J_bgear;    % Drive inertia, kg*m^2
+
+J_ts = 9.09e-6; % Torsional spring inertia, kg*m^2
+J_hubf = 4.66e-5; % Hub flange inertia, kg*m^2
+J_hub = 1.94e-5; % Hub inertia, kg*m^2
+J_shaft = 3.1e-4; % Shaft inertia, kg*m^2
+J_arm = 2.37e-3; % Arm inertia, kg*m^2
+J_L = J_ts + J_hubf + J_hub + J_shaft + J_arm;    % Load inertia, kg*m^2
+
+b_m = 4.5e-3;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-2;    % Load viscous friction coefficient, N*m*s
-N = 1;      % Gear ratio
-k_s = 10;    % Series spring coefficient, N*m
-k_p = 0;    % Parallel spring coefficient, N*m
+N = 6;      % Gear ratio
+k_s = 8.594;    % Series spring coefficient, N*m/rad
+k_p = 0;    % Parallel spring coefficient, N*m/rad
 
-K_t = 0.022879; % Torque constant, N*m/A
-K_a = 1.4;      % Amp constant, A/V
+K_t = 0.0226; % Torque constant, N*m/A
+K_a = 4.8788;      % Amp constant, A/V
 
+%% Initial Conditions
+deg2rad = @(x) x*pi/180;
+theta_L0 = deg2rad(105);
+theta_m0 = deg2rad(105);
+
+%% Controller parameters
 controller = 1;
 plant = 1;
-control_value = 0;
+control_value = 90;
 
+%% Gui setup
 assignin('base','K_p',K_p);
 assignin('base','K_d',K_d);
 assignin('base','K_i',K_i);
 assignin('base','T_sample_control',T_sample_control);
 assignin('base','m',m);
-assignin('base','g',9.8);
-assignin('base','l',0.25);
+assignin('base','g',g);
+assignin('base','l',l);
 assignin('base','theta_c',theta_c);
 assignin('base','J_m',J_m);
 assignin('base','J_L',J_L);
@@ -72,3 +73,5 @@ assignin('base','K_a',K_a);
 assignin('base','controller',controller);
 assignin('base','plant',plant);
 assignin('base','control_value',control_value)
+assignin('base','theta_L0',theta_L0);
+assignin('base','theta_m0',theta_m0);
