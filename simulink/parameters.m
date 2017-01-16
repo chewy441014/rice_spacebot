@@ -75,3 +75,19 @@ assignin('base','plant',plant);
 assignin('base','control_value',control_value)
 assignin('base','theta_L0',theta_L0);
 assignin('base','theta_m0',theta_m0);
+
+% %PID Position Desired Position
+% assignin('base','pid_pos_desired',0);
+% 
+% %PID Torque Desired Torque
+% assignin('base','pid_tor_desired',0);
+% 
+% %Basic Impedance Control
+% %Desired Virtual Damping
+% assignin('base','pid_imp_vdam_con',0);
+% %Desired Vitual Spring Constant
+% assignin('base','pid_imp_vk_con',0);
+% %Desired Virtual Spring Zero Position
+% assignin('base','pid_imp_vk_pos',0);
+% %Desired Virtual Damper Zero Velocity
+% assigin('base','pid_imp_vdam_vel',0);

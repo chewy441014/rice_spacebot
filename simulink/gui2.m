@@ -22,7 +22,7 @@ function varargout = gui2(varargin)
 
 % Edit the above text to modify the response to help gui2
 
-% Last Modified by GUIDE v2.5 13-Jan-2017 15:07:55
+% Last Modified by GUIDE v2.5 16-Jan-2017 14:57:54
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -87,31 +87,6 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 run('parameters.m');
 
 
-
-function edit2_Callback(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit2 as text
-%        str2double(get(hObject,'String')) returns contents of edit2 as a double
-control_value = str2double(get(hObject,'String'));
-assignin('base','control_value',control_value);
-
-
-% --- Executes during object creation, after setting all properties.
-function edit2_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
 % --- Executes when selected object is changed in uibuttongroup1.
 function uibuttongroup1_SelectionChangedFcn(hObject, eventdata, handles)
 % hObject    handle to the selected object in uibuttongroup1 
@@ -119,15 +94,13 @@ function uibuttongroup1_SelectionChangedFcn(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
     case 'radiobutton1'
-        %display('Radio button 1');
         assignin('base','controller',1);
     case 'radiobutton2'
-        %display('Radio button 2');
         assignin('base','controller',2);
     case 'radiobutton3'
-        %display('Radio button 3');
-        display('Not Implemented')
-        %assignin('base','controller',3);
+        assignin('base','controller',3);
+    case 'radiobutton16'
+        assignin('base','controller',4);
 end
 
 
@@ -138,13 +111,10 @@ function uibuttongroup3_SelectionChangedFcn(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
     case 'radiobutton4'
-        %display('Radio button 4');
         assignin('base','plant',1);
     case 'radiobutton5'
-        %display('Radio button 5');
         assignin('base','plant',2);
     case 'radiobutton6'
-        %display('Radio button 6');
         assignin('base','plant',3);
 end
 
