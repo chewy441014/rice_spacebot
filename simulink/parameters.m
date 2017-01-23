@@ -37,20 +37,20 @@ b_m = 4.5e-3;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-2;    % Load viscous friction coefficient, N*m*s
 N = 6;      % Gear ratio
 k_s = 8.594;    % Series spring coefficient, N*m/rad
-k_p = 0;    % Parallel spring coefficient, N*m/rad
+k_p = 1;    % Parallel spring coefficient, N*m/rad
 
 K_t = 0.0226; % Torque constant, N*m/A
 K_a = 4.8788;      % Amp constant, A/V
 
 %% Initial Conditions
 deg2rad = @(x) x*pi/180;
-theta_L0 = deg2rad(105);
-theta_m0 = deg2rad(105);
+theta_L0 = deg2rad(0);
+theta_m0 = deg2rad(0);
 
 %% Controller parameters
 controller = 1;
 plant = 1;
-control_value = 90;
+control_value = 0;
 
 %% Gui setup
 assignin('base','K_p',K_p);
