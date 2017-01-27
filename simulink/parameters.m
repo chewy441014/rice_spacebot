@@ -16,8 +16,8 @@ K_i = 0.1;    % Integral Gain
 T_sample_control = 500e-6;    % Sample period, s
 
 %% System Parameters
-m = 0.0907;      % Mass of arm, kg
-g = 9.81;    % Gravity, m/s^2
+m = 1.9113;      % Mass of arm, kg
+g = 9.81;      % Gravity, m/s^2
 l = 0.16;   % Distance to center of mass of arm, m
 theta_c = 0; % Parallel spring equilibrium point, radians
 
@@ -33,15 +33,19 @@ J_shaft = 3.1e-4; % Shaft inertia, kg*m^2
 J_arm = 2.37e-3; % Arm inertia, kg*m^2
 J_L = J_ts + J_hubf + J_hub + J_shaft + J_arm;    % Load inertia, kg*m^2
 
-b_m = 4.5e-3;    % Motor viscous friction coefficient, N*m*s
-b_L = 1e-2;    % Load viscous friction coefficient, N*m*s
-N = 6;      % Gear ratio
+b_m = 1e-5;    % Motor viscous friction coefficient, N*m*s
+b_L = 1e-5;    % Load viscous friction coefficient, N*m*s
+N = 1;      % Gear ratio
 
-k_s = 8.594;    % Series spring coefficient, N*m/rad
+k_s = 124;    % Series spring coefficient, N*m/rad
 k_p = 1;    % Parallel spring coefficient, N*m/rad
 
-K_t = 0.0226; % Torque constant, N*m/A
-K_a = 4.8788;      % Amp constant, A/V
+%K_t = 0.0226; % Torque constant, N*m/A
+%K_a = 4.8788;      % Amp constant, A/V
+
+%%% Duty Cycle 
+tau_continuous = 3.38; %Nm
+tau_max = 5; %Nm
 
 %% Initial Conditions
 deg2rad = @(x) x*pi/180;
