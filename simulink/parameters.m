@@ -13,6 +13,13 @@ K_p = 0.025;    % Proportional Gain
 K_d = 0.005;    % Derivative Gain
 K_i = 0.1;    % Integral Gain
 
+pid_torque_Kp = 0;
+pid_torque_Kd = 0;
+pid_torque_Ki = 0;
+
+pid_imp_Kp = 0.005; % Simple impedance spring constant
+pid_imp_Kd = 0; % Simple impedance damping constant
+
 T_sample_control = 500e-6;    % Sample period, s
 
 %% System Parameters
@@ -83,13 +90,9 @@ assignin('base','theta_m0',theta_m0);
 % 
 % %PID Torque Desired Torque
 % assignin('base','pid_tor_desired',0);
-% 
-% %Basic Impedance Control
-% %Desired Virtual Damping
-% assignin('base','pid_imp_vdam_con',0);
-% %Desired Vitual Spring Constant
-% assignin('base','pid_imp_vk_con',0);
-% %Desired Virtual Spring Zero Position
-% assignin('base','pid_imp_vk_pos',0);
-% %Desired Virtual Damper Zero Velocity
-% assigin('base','pid_imp_vdam_vel',0);
+
+%Basic Impedance Control
+%Desired Virtual Damping
+assignin('base','pid_imp_Kp',pid_imp_Kp);
+%Desired Vitual Spring Constant
+assignin('base','pid_imp_Kd',pid_imp_Kp);
