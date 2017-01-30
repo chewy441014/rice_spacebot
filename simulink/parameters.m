@@ -9,9 +9,9 @@
 clear;
 
 %% Controller Gains
-K_p = 0.025;    % Proportional Gain
-K_d = 0.005;    % Derivative Gain
-K_i = 0.1;    % Integral Gain
+K_p = 0;    % Proportional Gain
+K_d = 0.1;    % Derivative Gain
+K_i = 0;    % Integral Gain
 
 pid_torque_Kp = 0;
 pid_torque_Kd = 0;
@@ -38,14 +38,11 @@ J_shaft = 3.1e-4; % Shaft inertia, kg*m^2
 J_arm = m*l^2; % Arm inertia, kg*m^2
 J_L = J_ts + J_hubf + J_hub + J_shaft + J_arm;    % Load inertia, kg*m^2
 
-b_m = 1e-5;    % Motor viscous friction coefficient, N*m*s
-b_L = 1e-5;    % Load viscous friction coefficient, N*m*s
+b_m = 1e-3;    % Motor viscous friction coefficient, N*m*s
+b_L = 1e-3;    % Load viscous friction coefficient, N*m*s
 
 k_s = 124;    % Series spring coefficient, N*m/rad
 k_p = 1;    % Parallel spring coefficient, N*m/rad
-
-%K_t = 0.0226; % Torque constant, N*m/A
-%K_a = 4.8788;      % Amp constant, A/V
 
 %%% Duty Cycle 
 tau_continuous = 3.38; %Nm
@@ -53,8 +50,8 @@ tau_max = 5; %Nm
 
 %% Initial Conditions
 deg2rad = @(x) x*pi/180;
-theta_L0 = deg2rad(0);
-theta_m0 = deg2rad(0);
+theta_L0 = deg2rad(10);
+theta_m0 = deg2rad(10);
 
 %% Controller parameters
 controller = 1;
@@ -74,25 +71,17 @@ assignin('base','J_m',J_m);
 assignin('base','J_L',J_L);
 assignin('base','b_m',b_m);
 assignin('base','b_L',b_L);
-assignin('base','N',N);
 assignin('base','k_s',k_s);
 assignin('base','k_p',k_p);
-assignin('base','K_t',K_t);
-assignin('base','K_a',K_a);
 assignin('base','controller',controller);
 assignin('base','plant',plant);
 assignin('base','control_value',control_value)
 assignin('base','theta_L0',theta_L0);
 assignin('base','theta_m0',theta_m0);
-
-% %PID Position Desired Position
-% assignin('base','pid_pos_desired',0);
-% 
-% %PID Torque Desired Torque
-% assignin('base','pid_tor_desired',0);
-
-%Basic Impedance Control
-%Desired Virtual Damping
 assignin('base','pid_imp_Kp',pid_imp_Kp);
-%Desired Vitual Spring Constant
 assignin('base','pid_imp_Kd',pid_imp_Kp);
+assignin('base','pid_torque_Kp',pid_torque_Kp);
+assignin('base','pid_torque_Kd',pid_torque_Kd);
+assignin('base','pid_torque_Ki',pid_torque_Ki);
+assignin('base','tau_continuous',tau_continuous);
+assignin('base','tau_max',tau_max);
