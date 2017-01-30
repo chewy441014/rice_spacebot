@@ -22,20 +22,17 @@ l = 0.16;   % Distance to center of mass of arm, m
 theta_c = 0; % Parallel spring equilibrium point, radians
 
 J_motor = 2.832e-4; % Motor inertia, kg*m^2
-%J_sgear = 2e-8; % Small gear inertia, kg*m^2
-%J_bgear = 2e-6; % Big gear inertia, kg*m^2
 J_m = J_motor; %Drive inertia, kg*m^2
 
 J_ts = 9.09e-6; % Torsional spring inertia, kg*m^2
 J_hubf = 4.66e-5; % Hub flange inertia, kg*m^2
 J_hub = 1.94e-5; % Hub inertia, kg*m^2
 J_shaft = 3.1e-4; % Shaft inertia, kg*m^2
-J_arm = 2.37e-3; % Arm inertia, kg*m^2
+J_arm = m*l^2; % Arm inertia, kg*m^2
 J_L = J_ts + J_hubf + J_hub + J_shaft + J_arm;    % Load inertia, kg*m^2
 
 b_m = 1e-5;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-5;    % Load viscous friction coefficient, N*m*s
-N = 1;      % Gear ratio
 
 k_s = 124;    % Series spring coefficient, N*m/rad
 k_p = 1;    % Parallel spring coefficient, N*m/rad
