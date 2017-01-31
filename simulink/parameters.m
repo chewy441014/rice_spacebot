@@ -20,7 +20,7 @@ pid_torque_Ki = 0;
 pid_imp_Kp = 0.005; % Simple impedance spring constant
 pid_imp_Kd = 0; % Simple impedance damping constant
 
-T_sample_control = 500e-6;    % Sample period, s
+T_sample_control = 500e-4;    % Sample period, s
 
 %% System Parameters
 m = 1.9113;      % Mass of arm, kg
@@ -38,11 +38,11 @@ J_shaft = 3.1e-4; % Shaft inertia, kg*m^2
 J_arm = m*l^2; % Arm inertia, kg*m^2
 J_L = J_ts + J_hubf + J_hub + J_shaft + J_arm;    % Load inertia, kg*m^2
 
-b_m = 1e-3;    % Motor viscous friction coefficient, N*m*s
-b_L = 1e-3;    % Load viscous friction coefficient, N*m*s
+b_m = 1e-4;    % Motor viscous friction coefficient, N*m*s
+b_L = 1e-4;    % Load viscous friction coefficient, N*m*s
 
-k_s = 124;    % Series spring coefficient, N*m/rad
-k_p = 1;    % Parallel spring coefficient, N*m/rad
+k_s = 120;    % Series spring coefficient, N*m/rad
+k_p = 0;    % Parallel spring coefficient, N*m/rad
 
 %%% Duty Cycle 
 tau_continuous = 3.38; %Nm
@@ -56,7 +56,7 @@ theta_m0 = deg2rad(10);
 %% Controller parameters
 controller = 1;
 plant = 1;
-control_value = 0;
+control_value = deg2rad(0);
 
 %% Gui setup
 assignin('base','K_p',K_p);
