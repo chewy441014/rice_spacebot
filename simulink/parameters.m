@@ -10,7 +10,7 @@ clear;
 
 %% Controller Gains
 K_p = 0;    % Proportional Gain
-K_d = 0.1;    % Derivative Gain
+K_d = 0.5;    % Derivative Gain
 K_i = 0;    % Integral Gain
 
 pid_torque_Kp = 0;
@@ -20,7 +20,7 @@ pid_torque_Ki = 0;
 pid_imp_Kp = 0.005; % Simple impedance spring constant
 pid_imp_Kd = 0; % Simple impedance damping constant
 
-T_sample_control = 500e-4;    % Sample period, s
+T_sample_control = 500e-5;    % Sample period, s
 
 %% System Parameters
 m = 1.9113;      % Mass of arm, kg
@@ -42,7 +42,7 @@ b_m = 1e-4;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-4;    % Load viscous friction coefficient, N*m*s
 
 k_s = 120;    % Series spring coefficient, N*m/rad
-k_p = 0;    % Parallel spring coefficient, N*m/rad
+k_p = 10;    % Parallel spring coefficient, N*m/rad
 
 %%% Duty Cycle 
 tau_continuous = 3.38; %Nm
