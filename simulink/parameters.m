@@ -13,8 +13,8 @@ K_p = 0;    % Proportional Gain
 K_d = 0.5;    % Derivative Gain
 K_i = 0;    % Integral Gain
 
-pid_torque_Kp = 0;
-pid_torque_Kd = 0;
+pid_torque_Kp = 1e-2;
+pid_torque_Kd = 1;
 pid_torque_Ki = 0;
 
 pid_imp_Kp = 0.005; % Simple impedance spring constant
@@ -50,13 +50,13 @@ tau_max = 5; %Nm
 
 %% Initial Conditions
 deg2rad = @(x) x*pi/180;
-theta_L0 = deg2rad(10);
-theta_m0 = deg2rad(10);
+theta_L0 = deg2rad(0);
+theta_m0 = deg2rad(0);
 
 %% Controller parameters
-controller = 1;
-plant = 1;
-control_value = deg2rad(0);
+% controller = 1;
+% plant = 1;
+control_value = 0.1;
 
 %% Gui setup
 assignin('base','K_p',K_p);
@@ -73,8 +73,8 @@ assignin('base','b_m',b_m);
 assignin('base','b_L',b_L);
 assignin('base','k_s',k_s);
 assignin('base','k_p',k_p);
-assignin('base','controller',controller);
-assignin('base','plant',plant);
+% assignin('base','controller',controller);
+% assignin('base','plant',plant);
 assignin('base','control_value',control_value)
 assignin('base','theta_L0',theta_L0);
 assignin('base','theta_m0',theta_m0);
