@@ -15,7 +15,7 @@ K_i = 0;    % Integral Gain
 
 pid_torque_Kp = 0.1;
 pid_torque_Kd = 0;
-pid_torque_Ki = 1;
+pid_torque_Ki = 2;
 
 pid_imp_Kp = 0.005; % Simple impedance spring constant
 pid_imp_Kd = 0; % Simple impedance damping constant
@@ -41,7 +41,7 @@ J_L = J_ts + J_hubf + J_hub + J_shaft + J_arm;    % Load inertia, kg*m^2
 b_m = 1e-3;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-3;    % Load viscous friction coefficient, N*m*s
 
-k_s = 120;    % Series spring coefficient, N*m/rad
+k_s = 300;    % Series spring coefficient, N*m/rad
 k_p = 10;    % Parallel spring coefficient, N*m/rad
 
 %%% Duty Cycle 
