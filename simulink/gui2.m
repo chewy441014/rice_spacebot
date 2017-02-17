@@ -22,7 +22,7 @@ function varargout = gui2(varargin)
 
 % Edit the above text to modify the response to help gui2
 
-% Last Modified by GUIDE v2.5 16-Jan-2017 14:57:54
+% Last Modified by GUIDE v2.5 15-Feb-2017 20:37:56
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -125,3 +125,16 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 Simulink.sdi.view
+
+
+% --- Executes when selected object is changed in uibuttongroup5.
+function uibuttongroup5_SelectionChangedFcn(hObject, eventdata, handles)
+% hObject    handle to the selected object in uibuttongroup5 
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
+    case 'radiobutton21'
+        assignin('base','setpoint',1);
+    case 'radiobutton22'
+        assignin('base','setpoint',0);
+end

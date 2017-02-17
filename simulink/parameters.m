@@ -7,26 +7,28 @@
 % SPACEBOT
 
 clear;
+Val_Torque = load('Val_Torque_Time_Traj.mat');
+Val_Torque = Val_Torque.Val_Torque;
 
 %% Controller Gains
-K_p = 0;    % Proportional Gain
-K_d = 0.5;    % Derivative Gain
-K_i = 0;    % Integral Gain
+K_p = 1;    % Proportional Gain
+K_d = 0.2;    % Derivative Gain
+K_i = 5;    % Integral Gain
 
-pid_torque_Kp = 0.1;
+pid_torque_Kp = 0;
 pid_torque_Kd = 0;
-pid_torque_Ki = 2;
+pid_torque_Ki = 15;
 
 pid_imp_Kp = 0.005; % Simple impedance spring constant
 pid_imp_Kd = 0; % Simple impedance damping constant
 
-T_sample_control = 500e-4;    % Sample period, s
+T_sample_control = 500e-6;    % Sample period, s
 
 %% System Parameters
 m = 1.9113;      % Mass of arm, kg
 g = 9.81;      % Gravity, m/s^2
 l = 0.16;   % Distance to center of mass of arm, m
-theta_c = 0; % Parallel spring equilibrium point, radians
+theta_c = -1; % Parallel spring equilibrium point, radians
 
 J_motor = 2.832e-4; % Motor inertia, kg*m^2
 J_m = J_motor; %Drive inertia, kg*m^2
@@ -38,11 +40,11 @@ J_shaft = 3.1e-4; % Shaft inertia, kg*m^2
 J_arm = m*l^2; % Arm inertia, kg*m^2
 J_L = J_ts + J_hubf + J_hub + J_shaft + J_arm;    % Load inertia, kg*m^2
 
-b_m = 1e-3;    % Motor viscous friction coefficient, N*m*s
-b_L = 1e-3;    % Load viscous friction coefficient, N*m*s
+b_m = 1e-2;    % Motor viscous friction coefficient, N*m*s
+b_L = 1e-2;    % Load viscous friction coefficient, N*m*s
 
 k_s = 300;    % Series spring coefficient, N*m/rad
-k_p = 10;    % Parallel spring coefficient, N*m/rad
+k_p = 1;    % Parallel spring coefficient, N*m/rad
 
 %%% Duty Cycle 
 tau_continuous = 3.38; %Nm
@@ -85,3 +87,4 @@ assignin('base','pid_torque_Kd',pid_torque_Kd);
 assignin('base','pid_torque_Ki',pid_torque_Ki);
 assignin('base','tau_continuous',tau_continuous);
 assignin('base','tau_max',tau_max);
+assignin('base','Val_Torque',Val_Torque);
