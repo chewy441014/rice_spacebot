@@ -11,16 +11,16 @@ Val_Torque = load('Val_Torque_Time_Traj.mat');
 Val_Torque = Val_Torque.Val_Torque;
 
 %% Controller Gains
-K_p = 1;    % Proportional Gain
-K_d = 0.2;    % Derivative Gain
-K_i = 5;    % Integral Gain
+K_p = 40;    % Proportional Gain
+K_d = 2;    % Derivative Gain
+K_i = 0;    % Integral Gain
 
 pid_torque_Kp = 0;
 pid_torque_Kd = 0;
-pid_torque_Ki = 15;
+pid_torque_Ki = 5;
 
-pid_imp_Kp = 0.005; % Simple impedance spring constant
-pid_imp_Kd = 0; % Simple impedance damping constant
+pid_imp_Kp = 40; % Simple impedance spring constant
+pid_imp_Kd = 2; % Simple impedance damping constant
 
 T_sample_control = 500e-6;    % Sample period, s
 
@@ -81,7 +81,7 @@ assignin('base','control_value',control_value)
 assignin('base','theta_L0',theta_L0);
 assignin('base','theta_m0',theta_m0);
 assignin('base','pid_imp_Kp',pid_imp_Kp);
-assignin('base','pid_imp_Kd',pid_imp_Kp);
+assignin('base','pid_imp_Kd',pid_imp_Kd);
 assignin('base','pid_torque_Kp',pid_torque_Kp);
 assignin('base','pid_torque_Kd',pid_torque_Kd);
 assignin('base','pid_torque_Ki',pid_torque_Ki);
