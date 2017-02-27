@@ -11,9 +11,9 @@ Val_Torque = load('Val_Torque_Time_Traj.mat');
 Val_Torque = Val_Torque.Val_Torque;
 
 %% Controller Gains
-K_p = 40;    % Proportional Gain
-K_d = 2;    % Derivative Gain
-K_i = 0;    % Integral Gain
+K_p = 100;    % Proportional Gain
+K_d = 1.5;    % Derivative Gain
+K_i = 10;    % Integral Gain
 
 pid_torque_Kp = 0;
 pid_torque_Kd = 0;
@@ -43,7 +43,7 @@ J_L = J_ts + J_hubf + J_hub + J_shaft + J_arm;    % Load inertia, kg*m^2
 b_m = 1e-2;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-2;    % Load viscous friction coefficient, N*m*s
 
-k_s = 300;    % Series spring coefficient, N*m/rad
+k_s = 288;    % Series spring coefficient, N*m/rad
 k_p = 1;    % Parallel spring coefficient, N*m/rad
 
 %%% Duty Cycle 
