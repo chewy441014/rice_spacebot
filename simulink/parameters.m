@@ -11,20 +11,20 @@ Val_Torque = load('Val_Torque_Time_Traj.mat');
 Val_Torque = Val_Torque.Val_Torque;
 
 %% Controller Gains
-K_p = 100;    % Proportional Gain
-K_d = 1.5;    % Derivative Gain
-K_i = 10;    % Integral Gain
+K_p = 200;    % Proportional Gain
+K_d = 8;    % Derivative Gain
+K_i = 100;    % Integral Gain
 
 pid_torque_Kp = 0;
 pid_torque_Kd = 0;
-pid_torque_Ki = 5;
+pid_torque_Ki = 10;
 
 kp_cas = 1;
+kd_cas = 0;
 ki_cas = 0;
-kd_cas = 0.0005;
 
-pid_imp_Kp = 40; % Simple impedance spring constant
-pid_imp_Kd = 2; % Simple impedance damping constant
+pid_imp_Kp = 200; % Simple impedance spring constant
+pid_imp_Kd = 8; % Simple impedance damping constant
 
 T_sample_control = 500e-6;    % Sample period, s
 
@@ -48,7 +48,7 @@ b_m = 1e-2;    % Motor viscous friction coefficient, N*m*s
 b_L = 1e-2;    % Load viscous friction coefficient, N*m*s
 
 k_s = 288;    % Series spring coefficient, N*m/rad
-k_p = 3;    % Parallel spring coefficient, N*m/rad
+k_p = 1;    % Parallel spring coefficient, N*m/rad
 
 %%% Duty Cycle 
 tau_continuous = 3.38; %Nm
@@ -62,7 +62,7 @@ theta_m0 = deg2rad(0);
 %% Controller parameters
 % controller = 1;
 % plant = 1;
-control_value = 0.5;
+control_value = deg2rad(15);
 
 %% Gui setup
 assignin('base','K_p',K_p);
